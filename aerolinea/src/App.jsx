@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import React from 'react';
-import Usuarios from './components/pages/Usuarios';
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import React from "react";
+import Usuarios from "./components/pages/Usuarios";
 
 function Home() {
   return (

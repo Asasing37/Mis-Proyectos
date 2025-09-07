@@ -2,38 +2,44 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Usuarios = () => {
+    
     const [usuarios, setUsuarios] = useState([]);
 
-    useEffect(() => {
-        fetchUsuarios();
-    }, []);
-
-    const fetchUsuarios = async () => {
+    const cargarUsuarios = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/api/usuarios');
-            setUsuarios(res.data);
+            const response = await axios.get('http://localhost:3001/api/usuarios');
+            setUsuarios(response.data);
         } catch (error) {
-            console.error('Error al cargar usuarios:', error);
+            console.error('Error al cargar los usuarios', error);
         }
     };
 
+    useEffect(() => {
+        cargarUsuarios();
+    }, []);
+
     return (
-        <div>
-            <h2>Lista de Usuarios</h2>
+        <div className='contenedorP'>
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Tipo de documento</th>
+                        <th>Numero de documento</th>
+                        <th>Correo personal</th>
+                        <th>Numero de celular</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {usuarios.map((usuario) => (
-                        <tr key={usuario.id}>
-                            <td>{usuario.id}</td>
-                            <td>{usuario.nombre}</td>
-                            <td>{usuario.email}</td>
+                    {usuarios.map((u) => (
+                        <tr key={u.id}>
+                            <td>{u.nombres}</td>
+                            <td>{u.apellidos}</td>
+                            <td>{u.tipo_documento || '-'}</td>
+                            <td>{u.numero_documento || '-'}</td>
+                            <td>{u.correo_personal || '-'}</td>
+                            <td>{u.numero_celular || '-'}</td>
                         </tr>
                     ))}
                 </tbody>

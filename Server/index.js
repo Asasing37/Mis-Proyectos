@@ -1,17 +1,15 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
-
-//Usuarios 
-
-const usuariosRoutes = require('./routes/usuarios.routes');
+const { getUsuarios } = require('./controllers/usuarios.controller');
 
 const app = express();
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use(cors());
+app.use(cors()); // 👈 para permitir peticiones desde React
 app.use(express.json());
-app.use('/api', usuariosRoutes);
 
-app.listen(3001, () => {
-    console.log('Servidor corriendo en el puerto 3001');
+// RUTA DE USUARIOS
+app.get('/api/usuarios', getUsuarios);
+
+const PORT = 3001;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
