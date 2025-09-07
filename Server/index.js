@@ -1,13 +1,13 @@
 const express = require('express');
 const cors = require('cors');
-const { getUsuarios } = require('./controllers/usuarios.controller');
+const usuariosRoutes = require('./routes/usuarios.routes');
 
 const app = express();
 app.use(cors()); // 👈 para permitir peticiones desde React
 app.use(express.json());
 
 // RUTA DE USUARIOS
-app.get('/api/usuarios', getUsuarios);
+app.use('/api', usuariosRoutes);
 
 const PORT = 3001;
 app.listen(PORT, () => {

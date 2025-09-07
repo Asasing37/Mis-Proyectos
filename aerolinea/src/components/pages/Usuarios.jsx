@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Usuarios = () => {
     
@@ -20,6 +21,9 @@ const Usuarios = () => {
 
     return (
         <div className='contenedorP'>
+            <Link to="/crearUsuarios">
+                <button className='usu'>Usuario Nuevo</button>
+            </Link>
             <table>
                 <thead>
                     <tr>
