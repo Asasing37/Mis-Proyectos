@@ -34,4 +34,33 @@ const crearUsuario = async (req, res) => {
     }
 };
 
-module.exports = { getUsuarios, crearUsuario };
+const actualizarUsuario = async (req, res) => {
+
+    try {
+
+        const {
+
+            nombres, apellidos, tipo_documento, numero_documento, 
+            correo_personal, numero_celular
+        } = req.body;
+
+        const { id } = req.params;
+
+        const sql = 'UPDATE Usuarios SET nombres = ?, apellidos = ?, tipo_documento = ?, numero_documento = ?, correo_personal = ?, numero_celular = ? WHERE id = ?'; 
+
+        const values = [
+
+            nombres, apellidos, tipo_documento, numero_documento, correo_personal, numero_celular, id
+        ];
+
+        const [result] = await db.query(sql, values);
+
+        res.status(201).json({ message: 'Usuario actualizado exitosamente', id: result.insertId});
+
+    } catch (error) {
+
+        res.status(500).json({ error: 'No se pudo actualizar el usuario', error: error.message});
+    }
+};
+
+module.exports = { getUsuarios, crearUsuario, actualizarUsuario };
