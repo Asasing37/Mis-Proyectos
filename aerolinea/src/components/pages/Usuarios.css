@@ -1,0 +1,18 @@
+* {
+
+    background-image: url('/aerolinea/src/img/serene-view-airplane-window-showcasing-600nw-2621167299.webp');
+}
+
+.usuarios-titulo {
+  color: #0d6efd;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.usuarios-tabla th, .usuarios-tabla td {
+  text-align: center;
+}
+
+.usuarios-boton-nuevo {
+  margin-bottom: 1.5rem;
+}

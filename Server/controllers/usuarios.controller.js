@@ -2,7 +2,7 @@ const db = require('../models/conexion');
 const bcrypt = require('bcrypt');
 
 const getUsuarios = (req, res) => {
-    const sql = 'SELECT * FROM usuarios';
+    const sql = 'SELECT * FROM Usuarios';
     db.query(sql, (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
@@ -20,7 +20,7 @@ const crearUsuario = async (req, res) => {
             correo_personal, numero_celular
         } = req.body;
 
-        const sql = 'INSERT INTO usuarios (nombres, apellidos, tipo_documento, numero_documento, correo_personal, numero_celular) VALUES (?, ?, ?, ?, ?, ?)';
+        const sql = 'INSERT INTO Usuarios (nombres, apellidos, tipo_documento, numero_documento, correo_personal, numero_celular) VALUES (?, ?, ?, ?, ?, ?)';
 
         const values = [
             nombres, apellidos, tipo_documento, numero_documento,
