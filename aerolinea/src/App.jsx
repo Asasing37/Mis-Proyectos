@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import React from "react";
 import Usuarios from "./components/pages/Usuarios";
 import CrearUsuarios from "./components/Usuarios/crearUsuarios";
-
+import ActualizarUsuarios from "./components/Usuarios/modificarUsuarios"
 function Home() {
   return (
     <div>
@@ -18,7 +18,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/usuarios" element={<Usuarios />} />
-  <Route path="/crearUsuarios" element={<CrearUsuarios />} />
+        <Route path="/crearUsuarios" element={<CrearUsuarios />} />
+  <Route path="/usuarios/editar/:id" element={<ActualizarUsuarios />} />
       </Routes>
     </Router>
   );
